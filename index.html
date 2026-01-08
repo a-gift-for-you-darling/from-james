@@ -10,6 +10,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             background: #000;
             display: flex;
@@ -93,31 +94,6 @@
     z-index: 300;
 }
 
-#labyrinthCanvas {
-    display: block;
-    margin: 0 auto;
-    background: #000;
-}
-
-#labyrinthClose {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background: #8b7355;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
-    border-radius: 5px;
-    z-index: 301;
-}
-
-#labyrinthClose:hover {
-    background: #a08968;
-}
-
 #itemDialog {
     position: absolute;
     top: 50%;
@@ -167,6 +143,129 @@
 #itemDialog button:hover {
     background: #a08968;
 }
+
+#memoriesPage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: none;
+    z-index: 300;
+    overflow-y: auto;
+    padding: 40px;
+}
+
+#memoriesContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #d4af37;
+}
+
+#memoriesContent h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.memory-item {
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #8b7355;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.memory-item h2 {
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.memory-item img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #8b7355;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+.memory-item p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+#closeMemoriesBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 30px;
+    background: #8b7355;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 301;
+}
+
+#closeMemoriesBtn:hover {
+    background: #a08968;
+}
+#letterPage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: none;
+    z-index: 300;
+    overflow-y: auto;
+    padding: 40px;
+}
+
+#letterContent {
+    max-width: 900px;
+    margin: 0 auto;
+    color: #d4af37;
+}
+
+#letterContent h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.letter-text {
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #8b7355;
+    border-radius: 10px;
+    padding: 40px;
+    font-size: 18px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+#closeLetterBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 30px;
+    background: #8b7355;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 301;
+}
+
+#closeLetterBtn:hover {
+    background: #a08968;
+}
     </style>
 </head>
 <body>
@@ -177,15 +276,29 @@
         <p id="memoryText"></p>
         <button onclick="closeMemory()">Continue (E)</button>
     </div>
-<div id="labyrinthGame">
-    <button id="labyrinthClose" onclick="closeLabyrinth()">Close (ESC)</button>
-    <canvas id="labyrinthCanvas"></canvas>
-    <div id="itemDialog">
-        <h2 id="itemTitle"></h2>
-        <img id="itemImage" src="" alt="Item" style="display:none;">
-        <p id="itemText"></p>
-        <button onclick="closeItemDialog()">Continue (Space)</button>
+<div id="memoriesPage">
+    <button id="closeMemoriesBtn" onclick="closeMemoriesPage()">Back</button>
+    <div id="memoriesContent">Our Journey
+        <h1>Reminds you of anything?</h1>
     </div>
+</div>
+
+<div id="letterPage">
+    <button id="closeLetterBtn" onclick="closeLetterPage()">Back</button>
+    <div id="letterContent">
+        <h1>A Letter for You</h1>
+        <div class="letter-text">
+            <p>Dear Darling,<br>
+I often express, during our conversations, my love and admiration for you. However I rarely talk in detail about why I think so, also, but not only, because you don’t let me. The first reason why I love you is that of why most people like each other (after the physical look, something that both of us agree in not taking in consideration), and that is your personality. It’s clear you are a person especially dedicated to the thought and the mind rather than to the body, which is something you share with me, although not in the same ways. This makes you prone to reflections which make you a person, in my eyes, refreshingly interesting. You are also a very direct and mentally imposing person, which is something I pretty much am too in real life, relative to my culture at least, and that I really admire. At the same time, you also care deeply about your friends and you are very delicate too when needed. Furthermore, you are extremely witty, smart and good in most things you do, so it’s really no wonder I’m not the first person that falls in love with your personality. 
+The second reason why I love you is, again, common to many human relationships: the way you act toward me. I am one of the lucky few who you care about and are nice and amazing towards, and while that doesn’t mean you aren’t harsh to me when needed, it still makes me really enjoy and crave the time I spend with you. Those two reasons are obvious and I started, over time, to take them for granted, which is a mistake, as the way we are and the way we act to each other is the foundation of us (and a very strong one!), and they should be remembered. Related to, but not the same as, the past reason is the fact you are, if not always, very often there for me, which is something I really need and enjoy from someone like you, being the lonely individual I am. This not only makes me closer to you and like you more as you are a rock for me, but also brings our relationship from a normal one of two people liking each other in how they are and behave to something deeper, as we both trust and rely on each other and are mostly there when the other needs. This brings me a sense of security, which is something I really value, also due to my past experiences: you make me feel safe with you and this makes me love and trust you completely. 
+Changing topic, another reason I love you is your ideals. While I would obviously not mind you or any other of my friend (the absence of “s” is intentional) having a different political or religious opinion than mine, it’s impossible to avoid that the fact we have makes us closer and allows us to understand each other better. At the same time we also have our differences, and this makes us even better and stronger, as we wouldn’t be able to otherwise grow from this relationship and we’d just be copies of each other. 
+Those are the most important reasons why I love you. There are many others, but I want to keep this letter short and my thoughts clear and concise.
+<br><br>
+Thank you for everything, I love you
+James </p>
+        </div>
+    </div>
+</div>
 </div>
 </div>
 
@@ -237,11 +350,41 @@ const poemPapers = [
     { position: [0, -150], poem: "And back it got\nA heart of stone\nTough and heavy\nAs the servant said:\n\"All the souls are gone\nIn the depth of Tartarus;\nOnly this survived, as so\nStrong the world forged her to be\"\nAnd so she sang." },
 ];
 
+const itemData = [
+    {
+        title: "Cryo boss with Kaeya",
+        image: "assets/1.png",
+        text: "I fought most bosses with you watching me from the side and laughing at me... and it was so fun to do it! Expecially when you gave me restrictions and I had to fight this boss with Kaeya without dying <3"
+    },
+    {
+        title: "Dendro boss with Kinich",
+        image: "assets/2.png",
+        text: "This one I didn't fail :D"
+    },
+    {
+        title: "Cryo flower",
+        image: "assets/3.png",
+        text: "I soloed so many bosses with Kinich alone!"
+    },
+    {
+        title: "Puzzles...",
+        image: "assets/4.png",
+        text: "I'M NOT STUPID I SWEAR T_T"
+    },
+    {
+        title: "Mount Mingyuan",
+        image: "assets/5.png",
+        text: "We went here after 10 hours straight of playing Genshin together!"
+    }
+];
+
+const letterObject = { position: [0, -160], name: "A Letter for You" };
+
 let poemPaperObjects = [];
-const finalImage = { position: [0, -160], name: "With love", content: "Thanks, for everything." };
+const finalImage = { position: [0, -170], name: "With love", content: "Thanks, for everything." };
 let finalImageObject = null;
 
-const finalMessage = { position: [0, -170], text: "From James\nTo Suri" };
+const finalMessage = { position: [0, -180], text: "From James\nTo Suri" };
 let finalMessageObject = null;
 let textMessageObjects = [];
 
@@ -252,6 +395,7 @@ let isLabyrinthOpen = false;
 let labyrinthCanvas, labyrinthCtx;
 let playerPos = { x: 1, y: 1 };
 let labyrinthKeys = {};
+let letterObjectMesh = null;
 const cellSize = 40;
 let lastMoveTime = 0;
 const moveDelay = 150; // milliseconds between moves
@@ -271,7 +415,7 @@ const moveDelay = 150; // milliseconds between moves
         scene.add(pointLight);
 
 function createCorridor() {
-    const corridorLength = 400;
+    const corridorLength = 420;
     const corridorWidth = 6;
     const wallHeight = 4;
 
@@ -447,7 +591,7 @@ scene.add(rightTopBaseboard);
             context.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
             
             context.fillStyle = '#d4af37';
-            context.font = 'bold 28px Courier New';
+            context.font = 'bold 28px cursive';
             context.textAlign = 'center';
             context.textBaseline = 'middle';
             
@@ -549,7 +693,7 @@ function createTextMessageObjects() {
         context.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
         
         context.fillStyle = '#d4af37';
-        context.font = 'bold 32px Courier New';
+        context.font = 'bold 32px cursive';
         context.textAlign = 'center';
         context.textBaseline = 'middle';
         
@@ -633,7 +777,7 @@ function createPoemPapers() {
         
         // Poem text - smaller and darker for readability on paper
         context.fillStyle = '#2a2a2a';
-        context.font = `${fontSize}px Courier New`;
+        context.font = `${fontSize}px cursive`;
         context.textAlign = 'center';
         context.textBaseline = 'middle';
         
@@ -720,7 +864,14 @@ function createFinalImage() {
     scene.add(plane);
     finalImageObject = plane;
 }
-
+// Check letter object
+if (letterObjectMesh) {
+    const distance = camera.position.distanceTo(letterObjectMesh.position);
+    if (distance < 2 && distance < minDistance) {
+        minDistance = distance;
+        nearestMemory = letterObjectMesh;
+    }
+}
 // Create final message
 function createFinalMessage() {
     const canvas = document.createElement('canvas');
@@ -736,7 +887,7 @@ function createFinalMessage() {
     context.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
     
     context.fillStyle = '#d4af37';
-    context.font = 'bold 32px Courier New';
+    context.font = 'bold 32px cursive';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     
@@ -767,83 +918,49 @@ function createFinalMessage() {
     finalMessageObject = plane;
 }
 
-// Labyrinth maze: 0 = wall, 1 = path, 2 = item, 3 = end
-const labyrinthMaze = [
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,2,0],
-    [0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0],
-    [0,2,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0],
-    [0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0],
-    [0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,2,1,1,1,0,1,1,1,1,0],
-    [0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0],
-    [0,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,0,1,0],
-    [0,0,0,0,0,1,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,1,0],
-    [0,1,1,1,0,1,1,1,1,1,0,1,0,1,1,1,0,1,1,1,0,1,0,1,1,1,1,2,1,0],
-    [0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,0],
-    [0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0],
-    [0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,1,0],
-    [0,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,2,1,0],
-    [0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,1,0],
-    [0,2,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,0],
-    [0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0],
-    [0,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,0],
-    [0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0],
-    [0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,2,1,0],
-    [0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0],
-    [0,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,0,1,1,1,1,0],
-    [0,0,0,1,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0,1,0,0,1,0],
-    [0,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1,1,0,2,1,0],
-    [0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0],
-    [0,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-    [0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
-    [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-    [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-];
+// Create letter object
+// Create letter object
+function createLetterObject() {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    canvas.width = 800;
+    canvas.height = 1000;
+    
+    // Envelope/paper-like background
+    context.fillStyle = '#f4e8d0';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Border
+    context.strokeStyle = '#d4c4a8';
+    context.lineWidth = 3;
+    context.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
+    
+    // Letter text only
+    context.fillStyle = '#8b7355';
+    context.font = 'bold 48px cursive';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText('A Letter for You', canvas.width / 2, canvas.height / 2);
+    
+    const texture = new THREE.CanvasTexture(canvas);
+    const material = new THREE.MeshBasicMaterial({ 
+        map: texture,
+        transparent: true,
+        side: THREE.DoubleSide,
+        opacity: 0
+    });
+    
+    const geometry = new THREE.PlaneGeometry(6, 7.5);
+    const plane = new THREE.Mesh(geometry, material);
+    plane.position.set(letterObject.position[0], 2, letterObject.position[1]);
+    plane.userData = { 
+        isLetter: true
+    };
+    
+    scene.add(plane);
+    letterObjectMesh = plane;
+}
 
-const itemData = [
-    {
-        title: "Memory Fragment 1",
-        image: "assets/item1.png",
-        text: "First memory from our journey together..."
-    },
-    {
-        title: "Memory Fragment 2",
-        image: "assets/item2.png",
-        text: "Second memory from our journey together..."
-    },
-    {
-        title: "Memory Fragment 3",
-        image: "assets/item3.png",
-        text: "Third memory from our journey together..."
-    },
-    {
-        title: "Memory Fragment 4",
-        image: "assets/item4.png",
-        text: "Fourth memory from our journey together..."
-    },
-    {
-        title: "Memory Fragment 5",
-        image: "assets/item5.png",
-        text: "Fifth memory from our journey together..."
-    },
-    {
-        title: "Memory Fragment 6",
-        image: "assets/item6.png",
-        text: "Sixth memory from our journey together..."
-    },
-    {
-        title: "Memory Fragment 7",
-        image: "assets/item7.png",
-        text: "Seventh memory from our journey together..."
-    },
-    {
-        title: "Memory Fragment 8",
-        image: "assets/item8.png",
-        text: "Final memory before the end..."
-    }
-];
-let collectedItems = 0;
 let isItemDialogOpen = false;
         createCorridor();
         createMemoryObjects();
@@ -851,6 +968,7 @@ let isItemDialogOpen = false;
         createPoemPapers(); 
         createFinalImage();
         createFinalMessage();
+        createLetterObject();
 
         // Create floating texts at start
         createFloatingText('Hello, darling!\nUse WASD + Mouse to explore', [0, 2.5, 2]);
@@ -875,23 +993,21 @@ let isItemDialogOpen = false;
         });
 
 document.addEventListener('keydown', (e) => {
-    if (isLabyrinthOpen) {
-        if (isItemDialogOpen) {
-            if (e.key === ' ') {
-                closeItemDialog();
-            }
-        } else {
-            labyrinthKeys[e.key.toLowerCase()] = true;
-            if (e.key.toLowerCase() === 'escape') {
-                closeLabyrinth();
-            }
-        }
-    } else {
-        keys[e.key.toLowerCase()] = true;
-        if (e.key.toLowerCase() === 'e' && currentMemory) {
-            closeMemory();
-        }
+    keys[e.key.toLowerCase()] = true;
+    if (e.key.toLowerCase() === 'e' && currentMemory) {
+        closeMemory();
     }
+if (e.key.toLowerCase() === 'escape') {
+    if (document.getElementById('memoriesPage').style.display === 'block') {
+        closeMemoriesPage();
+    } else if (document.getElementById('letterPage').style.display === 'block') {
+        closeLetterPage();
+    }
+}
+});
+
+document.addEventListener('keyup', (e) => {
+    keys[e.key.toLowerCase()] = false;
 });
 
 document.addEventListener('keyup', (e) => {
@@ -902,6 +1018,7 @@ document.addEventListener('keyup', (e) => {
     }
 });
 
+// Check proximity to memory objects and text messages
 // Check proximity to memory objects and text messages
 function checkMemoryProximity() {
     let nearestMemory = null;
@@ -914,12 +1031,22 @@ function checkMemoryProximity() {
             nearestMemory = obj;
         }
     });
+    
     // Check final image
     if (finalImageObject) {
         const distance = camera.position.distanceTo(finalImageObject.position);
         if (distance < 2 && distance < minDistance) {
             minDistance = distance;
             nearestMemory = finalImageObject;
+        }
+    }
+
+    // Check letter object
+    if (letterObjectMesh) {
+        const distance = camera.position.distanceTo(letterObjectMesh.position);
+        if (distance < 2 && distance < minDistance) {
+            minDistance = distance;
+            nearestMemory = letterObjectMesh;
         }
     }
 
@@ -932,10 +1059,23 @@ function checkMemoryProximity() {
         document.getElementById('interactPrompt').style.display = 'none';
     }
     
+    // Fade in/out letter object based on proximity
+    if (letterObjectMesh) {
+        const distance = camera.position.distanceTo(letterObjectMesh.position);
+        const fadeDistance = 8;
+        
+        if (distance < fadeDistance) {
+            const opacity = 1 - (distance / fadeDistance);
+            letterObjectMesh.material.opacity = Math.max(0, Math.min(1, opacity));
+        } else {
+            letterObjectMesh.material.opacity = 0;
+        }
+    }
+    
     // Fade in/out text messages based on proximity
     textMessageObjects.forEach(textObj => {
         const distance = camera.position.distanceTo(textObj.position);
-        const fadeDistance = 8; // Distance at which text starts appearing
+        const fadeDistance = 8;
         
         if (distance < fadeDistance) {
             const opacity = 1 - (distance / fadeDistance);
@@ -957,6 +1097,7 @@ function checkMemoryProximity() {
             poemObj.material.opacity = 0;
         }
     });
+    
     // Fade in/out final message based on proximity
     if (finalMessageObject) {
         const distance = camera.position.distanceTo(finalMessageObject.position);
@@ -969,6 +1110,7 @@ function checkMemoryProximity() {
             finalMessageObject.material.opacity = 0;
         }
     }
+    
     // Fade in/out memory images based on proximity
     memoryObjects.forEach(memObj => {
         const distance = camera.position.distanceTo(memObj.position);
@@ -1006,9 +1148,16 @@ function checkMemoryProximity() {
         }
 
 function openMemory(data) {
+    // Check if this is the letter
+    if (data.isLetter) {
+        openLetterPage();
+        keys['e'] = false;
+        return;
+    }
+    
     // Check if this is the final image
     if (data.index === 'final') {
-        openLabyrinth();
+        openMemoriesPage();
         return;
     }
     
@@ -1025,32 +1174,7 @@ function openMemory(data) {
             keys['e'] = false;
         }
 
-function openLabyrinth() {
-    isLabyrinthOpen = true;
-    document.getElementById('labyrinthGame').style.display = 'block';
-    
-    labyrinthCanvas = document.getElementById('labyrinthCanvas');
-    labyrinthCanvas.width = 1200;  // Increased from 800
-    labyrinthCanvas.height = 900;  // Increased from 600
-    labyrinthCtx = labyrinthCanvas.getContext('2d');
-    
-    // Reset player position and collected items
-    playerPos = { x: 1, y: 1 };
-    collectedItems = 0;
-    
-    // Reset all maze items (8 items marked as 2 in the maze)
-    const itemPositions = [[1,28], [3,1], [5,20], [9,27], [13,27], [15,1], [19,27], [23,27]];
-    itemPositions.forEach(([y, x]) => {
-        labyrinthMaze[y][x] = 2;
-    });
-    
-    drawLabyrinth();
-}
 
-function closeLabyrinth() {
-    isLabyrinthOpen = false;
-    document.getElementById('labyrinthGame').style.display = 'none';
-}
 function showItemDialog(itemIndex) {
     if (itemIndex >= itemData.length) return;
     
@@ -1075,64 +1199,6 @@ function closeItemDialog() {
     document.getElementById('itemDialog').style.display = 'none';
 }
 
-function drawLabyrinth() {
-    if (!labyrinthCtx) return;
-    
-    labyrinthCtx.fillStyle = '#000';
-    labyrinthCtx.fillRect(0, 0, labyrinthCanvas.width, labyrinthCanvas.height);
-    
-    // Center the maze
-    const offsetX = (labyrinthCanvas.width - labyrinthMaze[0].length * cellSize) / 2;
-    const offsetY = (labyrinthCanvas.height - labyrinthMaze.length * cellSize) / 2;
-    
-    // Draw maze
-    for (let y = 0; y < labyrinthMaze.length; y++) {
-        for (let x = 0; x < labyrinthMaze[y].length; x++) {
-            const px = offsetX + x * cellSize;
-            const py = offsetY + y * cellSize;
-            
-            if (labyrinthMaze[y][x] === 0) {
-                // Wall - dark green
-                labyrinthCtx.fillStyle = '#1a4d2e';
-                labyrinthCtx.fillRect(px, py, cellSize, cellSize);
-                labyrinthCtx.strokeStyle = '#0d2818';
-                labyrinthCtx.strokeRect(px, py, cellSize, cellSize);
-            } else if (labyrinthMaze[y][x] === 1) {
-                // Path - light green
-                labyrinthCtx.fillStyle = '#4f7942';
-                labyrinthCtx.fillRect(px, py, cellSize, cellSize);
-            } else if (labyrinthMaze[y][x] === 2) {
-                // Placeholder item - yellow
-                labyrinthCtx.fillStyle = '#4f7942';
-                labyrinthCtx.fillRect(px, py, cellSize, cellSize);
-                labyrinthCtx.fillStyle = '#d4af37';
-                labyrinthCtx.beginPath();
-                labyrinthCtx.arc(px + cellSize/2, py + cellSize/2, cellSize/4, 0, Math.PI * 2);
-                labyrinthCtx.fill();
-            } else if (labyrinthMaze[y][x] === 3) {
-                // End point - glowing green
-                labyrinthCtx.fillStyle = '#4f7942';
-                labyrinthCtx.fillRect(px, py, cellSize, cellSize);
-                labyrinthCtx.fillStyle = '#00ff00';
-                labyrinthCtx.beginPath();
-                labyrinthCtx.arc(px + cellSize/2, py + cellSize/2, cellSize/3, 0, Math.PI * 2);
-                labyrinthCtx.fill();
-                // Add glow effect
-                labyrinthCtx.strokeStyle = '#90ff90';
-                labyrinthCtx.lineWidth = 3;
-                labyrinthCtx.stroke();
-            }
-        }
-    }
-    
-    // Draw player - red circle
-    const playerX = offsetX + playerPos.x * cellSize + cellSize / 2;
-    const playerY = offsetY + playerPos.y * cellSize + cellSize / 2;
-    labyrinthCtx.fillStyle = '#ff4444';
-    labyrinthCtx.beginPath();
-    labyrinthCtx.arc(playerX, playerY, cellSize / 3, 0, Math.PI * 2);
-    labyrinthCtx.fill();
-}
 
 function updateLabyrinth() {
     if (!isLabyrinthOpen || isItemDialogOpen) return;
@@ -1181,6 +1247,48 @@ function updateLabyrinth() {
         drawLabyrinth();
     }
 }
+
+function openMemoriesPage() {
+    document.getElementById('memoriesPage').style.display = 'block';
+    document.exitPointerLock();
+    populateMemories();
+}
+
+function closeMemoriesPage() {
+    document.getElementById('memoriesPage').style.display = 'none';
+    renderer.domElement.requestPointerLock();
+}
+
+function populateMemories() {
+    const container = document.getElementById('memoriesContent');
+    
+    // Clear existing content except title
+    const title = container.querySelector('h1');
+    container.innerHTML = '';
+    container.appendChild(title);
+    
+    // Add all memory items
+    itemData.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'memory-item';
+        div.innerHTML = `
+            <h2>${item.title}</h2>
+            <img src="${item.image}" alt="${item.title}" onerror="this.style.display='none'">
+            <p>${item.text}</p>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function openLetterPage() {
+       document.getElementById('letterPage').style.display = 'block';
+       document.exitPointerLock();
+   }
+   
+   function closeLetterPage() {
+       document.getElementById('letterPage').style.display = 'none';
+       renderer.domElement.requestPointerLock();
+   }
         // Movement
         function updateMovement() {
             if (currentMemory) return;
@@ -1211,7 +1319,7 @@ function updateLabyrinth() {
 
             // Keep player in corridor bounds
             camera.position.x = Math.max(-2.5, Math.min(2.5, camera.position.x));
-            camera.position.z = Math.max(-165, Math.min(5, camera.position.z));
+            camera.position.z = Math.max(-175, Math.min(5, camera.position.z));
             camera.position.y = 1.6;
 
             // Update light position
@@ -1230,7 +1338,6 @@ function updateLabyrinth() {
             updateMovement();
             checkMemoryProximity();
             checkFloatingTexts();
-            updateLabyrinth();
             renderer.render(scene, camera);
         }
 
@@ -1245,4 +1352,3 @@ function updateLabyrinth() {
     </script>
 </body>
 </html>
-
